@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.videoSourcePlayer1 = new Accord.Controls.VideoSourcePlayer();
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonOption = new System.Windows.Forms.Button();
@@ -35,6 +36,7 @@
             this.buttonPlay = new System.Windows.Forms.Button();
             this.devicesCombo = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.buttonCapture = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // videoSourcePlayer1
@@ -51,7 +53,7 @@
             // 
             this.buttonClose.BackgroundImage = global::Accord_demo.Properties.Resources.shutdown;
             this.buttonClose.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonClose.Location = new System.Drawing.Point(1014, 517);
+            this.buttonClose.Location = new System.Drawing.Point(1121, 517);
             this.buttonClose.Name = "buttonClose";
             this.buttonClose.Size = new System.Drawing.Size(99, 104);
             this.buttonClose.TabIndex = 4;
@@ -62,7 +64,7 @@
             // 
             this.buttonOption.BackgroundImage = global::Accord_demo.Properties.Resources.img_239291;
             this.buttonOption.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.buttonOption.Location = new System.Drawing.Point(854, 517);
+            this.buttonOption.Location = new System.Drawing.Point(966, 517);
             this.buttonOption.Name = "buttonOption";
             this.buttonOption.Size = new System.Drawing.Size(99, 104);
             this.buttonOption.TabIndex = 3;
@@ -94,7 +96,7 @@
             // devicesCombo
             // 
             this.devicesCombo.FormattingEnabled = true;
-            this.devicesCombo.Location = new System.Drawing.Point(453, 556);
+            this.devicesCombo.Location = new System.Drawing.Point(604, 556);
             this.devicesCombo.Name = "devicesCombo";
             this.devicesCombo.Size = new System.Drawing.Size(247, 28);
             this.devicesCombo.TabIndex = 5;
@@ -102,17 +104,29 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(449, 517);
+            this.label1.Location = new System.Drawing.Point(600, 517);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(114, 20);
             this.label1.TabIndex = 6;
             this.label1.Text = "Select Device: ";
             // 
+            // buttonCapture
+            // 
+            this.buttonCapture.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("buttonCapture.BackgroundImage")));
+            this.buttonCapture.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.buttonCapture.Location = new System.Drawing.Point(406, 517);
+            this.buttonCapture.Name = "buttonCapture";
+            this.buttonCapture.Size = new System.Drawing.Size(99, 104);
+            this.buttonCapture.TabIndex = 7;
+            this.buttonCapture.UseVisualStyleBackColor = true;
+            this.buttonCapture.Click += new System.EventHandler(this.buttonCapture_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1146, 633);
+            this.ClientSize = new System.Drawing.Size(1319, 633);
+            this.Controls.Add(this.buttonCapture);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.devicesCombo);
             this.Controls.Add(this.buttonClose);
@@ -137,5 +151,6 @@
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.ComboBox devicesCombo;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonCapture;
     }
 }

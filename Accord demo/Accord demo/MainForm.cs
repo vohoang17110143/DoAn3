@@ -36,6 +36,10 @@ namespace Accord_demo
 
         private FilterInfoCollection videoDevices;
 
+        private Rectangle rect1;
+
+        private Bitmap grayImage;
+
         public MainForm()
         {
             InitializeComponent();
@@ -164,7 +168,7 @@ namespace Accord_demo
 
                     ResizeNearestNeighbor resize = new ResizeNearestNeighbor(160, 120);
                     UnmanagedImage downsample = resize.Apply(im);
-
+                    grayImage = Grayscale.CommonAlgorithms.BT709.Apply(image);
                     Rectangle[] regions = detector.ProcessFrame(downsample);
 
                     if (regions.Length > 0)
@@ -179,13 +183,14 @@ namespace Accord_demo
                             1, 1);
 
                         window.Inflate(
-                            (int)(0.2f * regions[0].Width * xscale),
-                            (int)(0.4f * regions[0].Height * yscale));
+                            (int)(0.4f * regions[0].Width * xscale),
+                            (int)(0.6f * regions[0].Height * yscale));
 
                         tracker.SearchWindow = window;
                         tracker.ProcessFrame(im);
 
                         marker = new RectanglesMarker(window);
+                        rect1 = window;
                         marker.ApplyInPlace(im);
 
                         image = im.ToManagedImage();
@@ -214,6 +219,25 @@ namespace Accord_demo
         private void buttonClose_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void buttonCapture_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (rect1 != null)
+                {
+                    Crop crop = new Crop(rect1);
+                    Bitmap newImage = crop.Apply(grayImage);
+                    ResizeBicubic resixe = new ResizeBicubic(640, 480);
+                    newImage = resixe.Apply(newImage);
+                    newImage.Save(@"D:\face.bmp");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
     }
 }
